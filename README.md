@@ -8,7 +8,7 @@ Given is a piano-movers type maze, which can be represented in configuration spa
 
 We program a human like solver, which has its own configurations space CS' which is initialized with some precision (importantly, CS != CS'(t=0)), and continually updated during solving time. The goal is to find the shortest path length from initial position to a predifined finish line. We will be able to play with solver parameters such as aforementioned precision, solver memory and a parameter influencing the updating of the CS after a collision. 
 
-## Seperation of CS into states
+## Seperation of configuration space into states
 Given a set of trajectories, our aim is to analyze their flow in CS. For this we seperate CS into different areas by eroding the CS, and finding all connected components. Connected components are termed a 'states'. 
 
 
