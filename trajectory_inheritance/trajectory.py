@@ -14,7 +14,7 @@ from Setup.Maze import Maze
 from Setup.Load import periodicity
 from PhysicsEngine.Display import Display
 from scipy.signal import savgol_filter
-from Analysis.Velocity import velocity
+# from Analysis.Velocity import velocity
 from trajectory_inheritance.exp_types import is_exp_valid
 from copy import copy
 

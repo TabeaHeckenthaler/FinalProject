@@ -2,7 +2,7 @@ from scipy.spatial import cKDTree
 from Setup.MazeFunctions import BoxIt
 import numpy as np
 from Setup.Load import loops
-from Analysis.GeneralFunctions import flatten
+from Setup.MazeFunctions import flatten
 import itertools
 
 # maximum distance between fixtures to have a contact (in cm)

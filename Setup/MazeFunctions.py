@@ -7,8 +7,6 @@ Created on Sun Apr 26 18:41:04 2020
 
 from Box2D import b2ContactListener
 import numpy as np
-import pygame
-from Analysis.GeneralFunctions import flatten
 from matplotlib import pyplot as plt
 
 
@@ -74,6 +72,10 @@ def PlotPolygon(body, arena_height, color, *vargs):
         if 'fill' in vargs:
             pass
             # I think matplotlib.patches woudl be useful here
+
+
+def flatten(t):
+    return [item for sublist in t for item in sublist]
 
 
 def ClosestCorner(vertices, gravCenter):
