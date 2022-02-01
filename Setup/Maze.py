@@ -677,6 +677,7 @@ class Maze(b2World):
             shape_height, shape_width, shape_thickness, shape_height_short_edge = self.getLoadDim()
         else:
             shape_height, shape_width, shape_thickness = self.getLoadDim()
+            shape_height_short_edge = np.NaN
 
         if self.shape.endswith('ASH'):
             print('I dont know circumference of ASH!!!')

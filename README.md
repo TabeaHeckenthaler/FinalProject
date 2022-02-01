@@ -25,7 +25,11 @@ Our analysis will contain assessments
 3. further network analytics provided by pathpy.
 
 ## Objectives
--[ ] Comment on your current functions in PhaseSpace Directory (clear documentation).
+-[ ] Comment on PhaseSpace.py (clear documentation).
+-[ ] Comment on States.py (clear documentation).
+-[ ] Comment on Display.py (clear documentation).
+-[ ] shorten or somehow clean up dstar light, good documentation
+-[ ] Comment on trajectory.py (clear documentation).
 -[ ] Create a main file, that will be able to run a simulation.
 -[ ] Add a level of stochasticity to the maze solving (??)
 -[ ] Simulate around 100 trajectories. 
