@@ -2,9 +2,9 @@
 ## Weizmann 2021/2022, lecturer: Gabor Szabo
 by Tabea Heckenthaler
 
-This [main function](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/final_project_main_Gabor.py) 
-is split into 2 functions: Walk in network of states, Simulation of trajectories within a piano-movers type maze.
-The second function runs 
+The [main function](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/final_project_main_Gabor.py) 
+is split into 2 sections: Walk in network of states, Simulation of trajectories within a piano-movers type maze.
+Importantly, the second function runs 
 [tests](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/PS_Search_Algorithms/Path_Planning_Rotation_students_test.py), 
 that currently are not successful, as I was asked to guide 4 Master students, and they are currently still working on filling in the 
 [functions](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/PS_Search_Algorithms/Path_Planning_Rotation_students.py). 
