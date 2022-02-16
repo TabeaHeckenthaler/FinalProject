@@ -57,8 +57,3 @@ If he does not succeed, he decreases the speed within this chosen bin (Bayesian 
 students). He recalculates the walking time to the end bin from every bin in his planning 
 space, and continues to the next time step. 
 We will be able to tune the solver parameters such as the aforementioned resolution, and dimension of CS (2D or 3D).
-
-## Objectives
--[ ] Show network walks
--[ ] Create a visualisation of the resulting transitions in the network (in form of an .html file). 
--[ ] Create a main file, that will be able to run a simulation.
