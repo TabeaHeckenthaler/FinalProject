@@ -9,6 +9,8 @@ Importantly, the second function runs
 that currently are not successful, as I was asked to guide 4 Master students, and they are currently still working on filling in the 
 [functions](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/PS_Search_Algorithms/Path_Planning_Rotation_students.py). 
 In the following, I describe more of the details of my project. 
+Also, the code will not be able to run on a foreign computer because it accesses large matrices stored as pickles on my 
+local computer.
 
 ## Piano-mover's Problem
 I study the solution of piano-mover's type mazes. 
