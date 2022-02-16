@@ -11,11 +11,13 @@ that currently are not successful, as I was asked to guide 4 Master students, an
 In the following, I describe more of the details of my project. 
 
 ## Piano-mover's Problem
-I study the solution of piano-mover's type mazes. The [specific maze]() we constructed consists of a T shaped object in a 
+I study the solution of piano-mover's type mazes. The [specific maze](https://github.com/TabeaHeckenthaler/FinalProject/blob/main/Graphs/Maze_states.png) 
+we constructed consists of a T shaped object in a 
 rectangular maze with 2 exit slits. 
 These mazes consist of static boundaries, through which an extended object has to be maneuvered in 2 dimensions.
 The object has 3 degrees of freedom (2 spacial coordinates, x and y, and orientation of its own body axis, theta).
-These 3 degrees of freedom span a 3 dimensional [space](), where every pixel in space represents a configuration of the 
+These 3 degrees of freedom span a 3 dimensional [space](https://github.com/TabeaHeckenthaler/FinalProject/blob/main/Graphs/Large_human_SPT_states.png), 
+where every pixel in space represents a configuration of the 
 object in the maze. These configurations are either 'possible' (collision free) or 'impossible' (colliding) maze 
 configurations. 
 Every solution of the maze, can be represented by a continuous line in the 'possible' configuration space. 
@@ -23,8 +25,8 @@ Every solution of the maze, can be represented by a continuous line in the 'poss
 ## 1. Walk in network of states
 ### Separation of configuration space into states
 Given a set of trajectories, our aim is to analyze their flow in CS. 
-For this we separate CS into different [areas]() by eroding the CS, and finding all connected components. 
-Connected components are termed a 'states'.
+For this we separate CS into different [areas](https://github.com/TabeaHeckenthaler/FinalProject/blob/main/Graphs/Large_human_SPT_transitions.png) 
+by eroding the CS, and finding all connected components. Connected components are termed a 'states'.
 
 ### Network visualisation and analysis 
 Based on the CS, we create a network of states: Network nodes represent states in CS, 
