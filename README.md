@@ -1,9 +1,9 @@
-# FinalProject: "Advanced Python Programming Skills"
+# FinalProject of course "Advanced Python Programming Skills"
 ## Weizmann 2021/2022, lecturer: Gabor Szabo
 by Tabea Heckenthaler
 
-The code can be found [here](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/final_project_main_Gabor.py).
-This main function is split into 2 functions: Walk in network of states, Simulation of trajectories within a piano-movers type maze.
+This [main function](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/final_project_main_Gabor.py) 
+is split into 2 functions: Walk in network of states, Simulation of trajectories within a piano-movers type maze.
 The second function runs 
 [tests](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/PS_Search_Algorithms/Path_Planning_Rotation_students_test.py), 
 that currently are not successful, as I was asked to guide 4 Master students, and they are currently still working on filling in the 
@@ -11,15 +11,14 @@ that currently are not successful, as I was asked to guide 4 Master students, an
 In the following, I describe more of the details of my project. 
 
 ## Piano-mover's Problem
-I study the solution of piano-mover's type mazes. The [specific maze](https://github.com/TabeaHeckenthaler/FinalProject/blob/main/Graphs/Maze_states.png) 
-we constructed consists of a T shaped object in a 
-rectangular maze with 2 exit slits. 
+I study the solution of piano-mover's type mazes. 
 These mazes consist of static boundaries, through which an extended object has to be maneuvered in 2 dimensions.
+The [specific maze](https://github.com/TabeaHeckenthaler/FinalProject/blob/main/Graphs/Maze_states.png) 
+we constructed consists of a T shaped object in a rectangular maze with 2 exit slits. 
 The object has 3 degrees of freedom (2 spacial coordinates, x and y, and orientation of its own body axis, theta).
 These 3 degrees of freedom span a 3 dimensional [space](https://github.com/TabeaHeckenthaler/FinalProject/blob/main/Graphs/Large_human_SPT_states.png), 
-where every pixel in space represents a configuration of the 
-object in the maze. These configurations are either 'possible' (collision free) or 'impossible' (colliding) maze 
-configurations. 
+where every pixel in space represents a configuration of the object in the maze. 
+These configurations are either 'possible' (collision free, dark) or 'impossible' (colliding, translucent) maze configurations. 
 Every solution of the maze, can be represented by a continuous line in the 'possible' configuration space. 
 
 ## 1. Walk in network of states
