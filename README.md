@@ -1,7 +1,7 @@
 # FinalProject
+## "Advanced Python Programming Skills" in Weizmann 2021/2022, by Gabor Szabo
 by Tabea Heckenthaler
 
-Final project of the course "Advanced Python Programming Skills" in Weizmann 2021/2022, by Gabor Szabo. 
 The code can be found [here](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/final_project_main_Gabor.py).
 This main function is split into 2 functions: Walk in network of states, Simulation of trajectories within a piano-movers type maze.
 The second function runs 
