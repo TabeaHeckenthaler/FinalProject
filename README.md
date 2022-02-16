@@ -1,5 +1,5 @@
 # FinalProject: "Advanced Python Programming Skills"
-## Weizmann 2021/2022, Gabor Szabo
+## Weizmann 2021/2022, lecturer: Gabor Szabo
 by Tabea Heckenthaler
 
 The code can be found [here](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/final_project_main_Gabor.py).
