@@ -30,7 +30,9 @@ by eroding the CS, and finding all connected components. Connected components ar
 ### Network visualisation and analysis 
 Based on the CS, we create a network of states: Network nodes represent states in CS, 
 network edges between nodes are transitions from one state to another state in CS. 
-The visualisation of the network will be in form of .html files using a method provided by pathpy.
+The visualizisation of the transition matrices can be found [here](https://github.com/TabeaHeckenthaler/FinalProject/tree/main/Graphs/Results).
+The visualisation of the network are in form of [.html](https://github.com/TabeaHeckenthaler/FinalProject/tree/main/Graphs/Results) 
+files created using a method provided by pathpy.
 
 ## 2. Simulation of trajectories within a piano-movers type maze
 I prepared a framework of a computational solver, which is supposed to resemble humans walking through the maze. 
