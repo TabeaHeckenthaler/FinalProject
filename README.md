@@ -2,6 +2,13 @@
 by Tabea Heckenthaler
 
 Final project of the course "Advanced Python Programming Skills" in Weizmann 2021/2022, by Gabor Szabo. 
+The code can be found [here](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/final_project_main_Gabor.py).
+This main function is split into 2 functions: Walk in network of states, Simulation of trajectories within a piano-movers type maze.
+The second function runs 
+[tests](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/PS_Search_Algorithms/Path_Planning_Rotation_students_test.py), 
+that currently are not successful, as I was asked to guide 4 Master students, and they are currently still working on filling in the 
+[functions](https://github.com/TabeaHeckenthaler/AntsShapes/blob/master/PS_Search_Algorithms/Path_Planning_Rotation_students.py). 
+In the following, I describe more of the details of my project. 
 
 ## Piano-mover's Problem
 I study the solution of piano-mover's type mazes. 
@@ -12,7 +19,7 @@ object in the maze. These configurations are either 'possible' (collision free) 
 configurations. 
 Every solution of the maze, can be represented by a continuous line in the 'possible' configuration space. 
 
-## Walk in network of states
+## 1. Walk in network of states
 ### Separation of configuration space into states
 Given a set of trajectories, our aim is to analyze their flow in CS. 
 For this we separate CS into different areas by eroding the CS, and finding all connected components. 
@@ -23,7 +30,7 @@ Based on the CS, we create a network of states: Network nodes represent states i
 network edges between nodes are transitions from one state to another state in CS. 
 The visualisation of the network will be in form of .html files using a method provided by pathpy.
 
-## Simulation of trajectories within a piano-movers type maze
+## 2. Simulation of trajectories within a piano-movers type maze
 I prepared a framework of a computational solver, which is supposed to resemble humans walking through the maze. 
 The goal of the solver is to find the shortest path length from initial configuration to a predefined finishing 
 configuration.
