@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html><body>
+<style>
+    text.label_JRXSonYy {
+        text-anchor: middle;
+        font-size: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        fill: #010101;
+        stroke: #ffffff;
+        stroke-width: 0.1px;
+        opacity: 1.0;
+    }
+    .links_JRXSonYy line {
+    stroke-opacity: 1.0;
+    }
+    .arrows svg:path {
+        stroke: #666;
+    }
+    .nodes_JRXSonYy circle {
+    stroke: #fff;
+    stroke-width: 0.5px;
+    }
+</style>
+
+<svg width="3200" height="3200" id="JRXSonYy">        
+    <text x="20" y="20" font-family="sans-serif" font-size="14px" fill="#666" style="cursor: pointer"
+        id='JRXSonYy_svg_txt'>[save svg]</text>
+</svg>
+
+<script charset="utf-8" src="https://d3js.org/d3.v4.min.js"></script>
+<script charset="utf-8">
+
+// Load via requireJS if available (jupyter notebook environment)
+try {
+    // Problem: require.config will raise an exception when called for the second time 
+    require.config({
+        paths: {
+            //d3: "https://d3js.org/d3.v4.min"
+            d3: "https://d3js.org/d3.v4.min.js".replace(".js", "")
+        }
+    });
+    console.log("Detected requireJS");
+}
+catch(err){
+    // a reference error indicates that requireJS does not exist. 
+    // other errors may occur due to multiple calls to config
+    if (err instanceof ReferenceError){
+        console.log("Detected no requireJS");
+
+        // Helper function that waits for d3js to be loaded
+        require = function require(symbols, callback) {
+            var ms = 5;
+            window.setTimeout(function(t) {
+                if (window[symbols[0]])
+                    callback(window[symbols[0]]);
+                else 
+                    window.setTimeout(arguments.callee, ms);
+            }, ms);
+        }
+    }
+}
+
+// wait until d3js has been loaded
+require(["d3"], function(d3) {
+    var svg = d3.select("#"+"JRXSonYy"), radius = 6, width = +svg.attr("width"), height = +svg.attr("height");
+
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+    var graph = {"links": [{"source": "a", "target": "ab", "color": "#999999", "width": 0.5, "weight": 0.20689655172413793}, {"source": "a", "target": "ad", "color": "#999999", "width": 0.5, "weight": 0.40229885057471265}, {"source": "a", "target": "b", "color": "#999999", "width": 0.5, "weight": 0.011494252873563218}, {"source": "ab", "target": "a", "color": "#999999", "width": 0.5, "weight": 0.3563218390804598}, {"source": "ab", "target": "b", "color": "#999999", "width": 0.5, "weight": 0.24786324786324787}, {"source": "ad", "target": "a", "color": "#999999", "width": 0.5, "weight": 0.022988505747126436}, {"source": "ad", "target": "d", "color": "#999999", "width": 0.5, "weight": 0.47959183673469385}, {"source": "b", "target": "ab", "color": "#999999", "width": 0.5, "weight": 0.3333333333333333}, {"source": "b", "target": "be", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "b", "target": "bf", "color": "#999999", "width": 0.5, "weight": 0.3}, {"source": "b", "target": "bg", "color": "#999999", "width": 0.5, "weight": 0.41509433962264153}, {"source": "be", "target": "b", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "bf", "target": "b", "color": "#999999", "width": 0.5, "weight": 0.3}, {"source": "bf", "target": "f", "color": "#999999", "width": 0.5, "weight": 0.2}, {"source": "bg", "target": "b", "color": "#999999", "width": 0.5, "weight": 0.5849056603773585}, {"source": "d", "target": "ad", "color": "#999999", "width": 0.5, "weight": 0.14285714285714285}, {"source": "d", "target": "de", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "d", "target": "df", "color": "#999999", "width": 0.5, "weight": 0.45652173913043476}, {"source": "d", "target": "e", "color": "#999999", "width": 0.5, "weight": 0.14285714285714285}, {"source": "de", "target": "e", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "df", "target": "d", "color": "#999999", "width": 0.5, "weight": 0.043478260869565216}, {"source": "df", "target": "f", "color": "#999999", "width": 0.5, "weight": 0.45652173913043476}, {"source": "e", "target": "eg", "color": "#999999", "width": 0.5, "weight": 0.4444444444444444}, {"source": "e", "target": "ei", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "eg", "target": "e", "color": "#999999", "width": 0.5, "weight": 0.05555555555555555}, {"source": "eg", "target": "g", "color": "#999999", "width": 0.5, "weight": 0.4444444444444444}, {"source": "ei", "target": "e", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "f", "target": "bf", "color": "#999999", "width": 0.5, "weight": 0.2}, {"source": "f", "target": "df", "color": "#999999", "width": 0.5, "weight": 0.043478260869565216}, {"source": "f", "target": "fg", "color": "#999999", "width": 0.5, "weight": 0.45}, {"source": "f", "target": "fi", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "f", "target": "g", "color": "#999999", "width": 0.5, "weight": 0.06896551724137931}, {"source": "fg", "target": "f", "color": "#999999", "width": 0.5, "weight": 0.075}, {"source": "fg", "target": "g", "color": "#999999", "width": 0.5, "weight": 0.425}, {"source": "fi", "target": "f", "color": "#999999", "width": 0.5, "weight": 0.5}, {"source": "g", "target": "eg", "color": "#999999", "width": 0.5, "weight": 0.05555555555555555}, {"source": "g", "target": "fg", "color": "#999999", "width": 0.5, "weight": 0.05}, {"source": "g", "target": "gj", "color": "#999999", "width": 0.5, "weight": 0.5050505050505051}, {"source": "gj", "target": "g", "color": "#999999", "width": 0.5, "weight": 0.1717171717171717}, {"source": "gj", "target": "j", "color": "#999999", "width": 0.5, "weight": 1.0}], "nodes": [{"id": "n_0", "text": "n_0", "color": "#99ccff", "size": 5.0}, {"id": "a", "text": "a", "color": "red", "size": 10.0}, {"id": "ab", "text": "ab", "color": "blue", "size": 5.0}, {"id": "ad", "text": "ad", "color": "blue", "size": 5.0}, {"id": "b", "text": "b", "color": "red", "size": 10.0}, {"id": "ba", "text": "ba", "color": "#99ccff", "size": 5.0}, {"id": "be", "text": "be", "color": "blue", "size": 5.0}, {"id": "bf", "text": "bf", "color": "blue", "size": 5.0}, {"id": "bg", "text": "bg", "color": "blue", "size": 5.0}, {"id": "d", "text": "d", "color": "red", "size": 10.0}, {"id": "da", "text": "da", "color": "#99ccff", "size": 5.0}, {"id": "de", "text": "de", "color": "blue", "size": 5.0}, {"id": "df", "text": "df", "color": "blue", "size": 5.0}, {"id": "di", "text": "di", "color": "#99ccff", "size": 5.0}, {"id": "e", "text": "e", "color": "red", "size": 10.0}, {"id": "eb", "text": "eb", "color": "#99ccff", "size": 5.0}, {"id": "ed", "text": "ed", "color": "#99ccff", "size": 5.0}, {"id": "eg", "text": "eg", "color": "blue", "size": 5.0}, {"id": "ei", "text": "ei", "color": "blue", "size": 5.0}, {"id": "f", "text": "f", "color": "red", "size": 10.0}, {"id": "fb", "text": "fb", "color": "#99ccff", "size": 5.0}, {"id": "fd", "text": "fd", "color": "#99ccff", "size": 5.0}, {"id": "fg", "text": "fg", "color": "blue", "size": 5.0}, {"id": "fi", "text": "fi", "color": "blue", "size": 5.0}, {"id": "g", "text": "g", "color": "red", "size": 10.0}, {"id": "gb", "text": "gb", "color": "#99ccff", "size": 5.0}, {"id": "ge", "text": "ge", "color": "#99ccff", "size": 5.0}, {"id": "gf", "text": "gf", "color": "#99ccff", "size": 5.0}, {"id": "gj", "text": "gj", "color": "blue", "size": 5.0}, {"id": "i", "text": "i", "color": "#99ccff", "size": 5.0}, {"id": "id", "text": "id", "color": "#99ccff", "size": 5.0}, {"id": "ie", "text": "ie", "color": "#99ccff", "size": 5.0}, {"id": "if", "text": "if", "color": "#99ccff", "size": 5.0}, {"id": "ij", "text": "ij", "color": "#99ccff", "size": 5.0}, {"id": "j", "text": "j", "color": "red", "size": 10.0}, {"id": "jg", "text": "jg", "color": "#99ccff", "size": 5.0}, {"id": "ji", "text": "ji", "color": "#99ccff", "size": 5.0}]};
+    var directed = true;
+
+    var simulation = d3.forceSimulation()        
+       .force("link", d3.forceLink().id(function(d) { return d.id; }).strength(function(d){return d.weight;}))
+        .force("charge", d3.forceManyBody().strength(-20).distanceMax(3200))
+       .force("repelForce", d3.forceManyBody().strength(-200).distanceMax(100))
+       .force("center", d3.forceCenter(3200 / 2, 3200 / 2))
+       .alphaTarget(0.0);
+
+    svg.append("defs").selectAll("marker")
+        .data(["end"])
+    .enter().append("marker")
+        .attr("id", String)
+        .attr("viewBox", "0 -5 20 20")
+        .attr("refX", 34)
+        .attr("refY", 0)
+        .attr("markerWidth", 15)
+        .attr("markerHeight", 15)
+        .attr("orient", "auto")
+    .append("path")
+        // draws a filled path (triangle) between three points
+        .attr("d", "M0,-5 L20,0 L0,5 z")
+        .attr("fill", '#999')
+        .attr("stroke", 'none');
+
+    var g = svg.append("g")
+        .attr("class", "everything");
+
+    var link = g.append("g")
+        .attr("class", "links_JRXSonYy")
+        .selectAll("line")
+        .data(graph.links)
+        .enter().append("line")
+        .attr("stroke-width", function(d) { return d.width; })
+        .attr("stroke", function(d) { return d.color; } );
+
+    if (directed)
+        link.attr("marker-end", "url(#end)");
+
+    var node_g = g.append("g")
+        .attr("class", "nodes_JRXSonYy")
+        .selectAll("circle")
+        .data(graph.nodes)
+        .enter()
+        .append("g"); 
+
+    var node = node_g.append("circle")
+        .attr('id', function(d) { return d.id; })
+        .attr("r", function(d) { return d.size; })
+        .attr("fill", function(d) { return d.color; })
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
+
+    var text = node_g.append("text")
+    .attr("x", [0, -10][0])
+    .attr("y", [0, -10][1]+3)
+    .attr("id", function(d) {return d.id; })
+    .attr("class", "label_JRXSonYy")
+    .text(function(d) { return d.id; });
+
+    node.append("title")
+        .text(function(d) { return d.text; });
+
+    var zoom_handler = d3.zoom()
+        .on("zoom", zoom_actions);
+    zoom_handler(svg);
+
+    // attach event handler for svg export
+    d3.select('#JRXSonYy_svg_txt').on("click", save_svg);
+
+    simulation
+        .nodes(graph.nodes)
+        .on("tick", ticked);
+
+    simulation.force("link")
+        .links(graph.links);
+
+    function ticked() {
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+         text.attr("transform", transform);
+
+
+        text.attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+
+        node.attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+    }
+
+    function transform(d) {
+        return "translate(" + d.x + "," + d.y + ")";
+    }
+
+    function dragstarted(d) {
+    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+    }
+
+    function zoom_actions(){
+        g.attr("transform", d3.event.transform)
+    }    
+
+    function dragged(d) {
+    d.fx = d3.event.x;
+    d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+    if (!d3.event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+    }
+
+    function to_svg() {
+        // Returns a SVG representation of the current state of the visualisation
+	    var svg  = document.getElementById('JRXSonYy');
+	    var xml = (new XMLSerializer).serializeToString(svg);
+        return xml;
+    }
+
+    function save_svg() {
+        var svg  = document.getElementById('JRXSonYy');
+        var xml = (new XMLSerializer).serializeToString(svg);        
+        var blob = new Blob([xml], {type: 'text/xml'});
+        if(window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveBlob(blob, 'network.svg');
+        }
+        else{
+            var elem = window.document.createElement('a');
+            elem.href = window.URL.createObjectURL(blob);
+            elem.download = 'network.svg';
+            document.body.appendChild(elem);
+            elem.click();
+            document.body.removeChild(elem);
+        }
+    }
+});
+</script></body>
+</html>
